@@ -1,0 +1,45 @@
+.shadow_table {
+  height: 700px;
+  width: 1450px;
+  background: #cd1a1a70;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_table {
+  width: 1390px;
+  height: 670px;
+  background: #cd1a1a;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-radius: 10px;
+  width: 147px;
+  height: 147px;
+  margin: 0px (67px/2);
+  box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.25),
+    inset 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+  border: 2px solid #cd1a1a;
+}
+
+.card_style_left_top {
+  border-radius: 30px 10px 10px 10px;
+}
+
+.card_style_right_top {
+  border-radius: 10px 30px 10px 10px;
+}
+.card_style_left_bottom {
+  border-radius: 10px 10px 10px 30px;
+}
+
+.card_style_right_bottom {
+  border-radius: 10px 10px 30px 10px;
+}

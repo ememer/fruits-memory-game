@@ -1,0 +1,28 @@
+@mixin grid($cols) {
+  display: flex;
+  flex-wrap: wrap;
+  @for $i from 1 through $cols {
+    .col-#{$i} {
+      flex: 0 0 (100% / $cols) * $i;
+    }
+  }
+}
+
+.container {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0px auto;
+  padding: 0px;
+  // border: 1px solid blue;
+  .row {
+    margin-left: 10px;
+    margin-right: 10px;
+    [class*="col-"] {
+      padding: 0 10px;
+
+      // border: 1px solid red;
+    }
+
+    @include grid(6);
+  }
+}
