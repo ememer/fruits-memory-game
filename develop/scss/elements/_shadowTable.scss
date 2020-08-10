@@ -1,6 +1,6 @@
 .shadow_table {
-  height: 700px;
-  width: 1450px;
+  height: 500px;
+  width: 1050px;
   background: #cd1a1a70;
   border-radius: 40px;
   display: flex;
@@ -9,8 +9,8 @@
 }
 
 .main_table {
-  width: 1390px;
-  height: 670px;
+  width: 990px;
+  height: 470px;
   background: #cd1a1a;
   border-radius: 40px;
   display: flex;
@@ -21,12 +21,12 @@
 
 .card {
   border-radius: 10px;
-  width: 147px;
-  height: 147px;
-  margin: 0px (67px/2);
+  width: 130px;
+  height: 130px;
+  margin: 0px (15px/2);
   box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.25),
     inset 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
-  border: 2px solid #cd1a1a;
+  border: 2px solid #cd1a1a70;
 }
 
 .card_style_left_top {

@@ -11,18 +11,29 @@ const Table = () => {
       if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
-        console.log({ hasFlippedCard, firstCard });
       } else {
         hasFlippedCard = false;
         secondCard = this;
-        console.log({ hasFlippedCard, secondCard });
 
-        console.log(firstCard.dataset.fruit);
-        console.log(secondCard.dataset.fruit);
-
-        firstCard.dataset.fruit === secondCard.dataset.fruit
-          ? console.log("tak")
-          : console.log("nie");
+        if (firstCard.dataset.fruit === secondCard.dataset.fruit) {
+          console.log(
+            "Pasuje",
+            firstCard.dataset.fruit,
+            secondCard.dataset.fruit
+          );
+          firstCard.removeEventListener("click", flipCard);
+          secondCard.removeEventListener("click", flipCard);
+        } else {
+          console.log(
+            "Nie pasuje",
+            firstCard.dataset.fruit,
+            secondCard.dataset.fruit
+          );
+          setTimeout(() => {
+            firstCard.classList.remove("test");
+            secondCard.classList.remove("test");
+          }, 1000);
+        }
       }
     }
     selectCards.forEach((card) => card.addEventListener("click", flipCard));
@@ -34,76 +45,84 @@ const Table = () => {
           <div className="row">
             <div className="col-6 main_table">
               <div className="row card_row">
-                <div
+                <button
                   className="card card_style_left_top"
                   data-fruit="strawberry"
                 >
                   1
-                </div>
-                <div className="card" data-fruit="strawberry">
+                </button>
+                <button className="card" data-fruit="strawberry">
                   2
-                </div>
-                <div className="card" data-fruit="pear">
+                </button>
+                <button className="card" data-fruit="pear">
                   3
-                </div>
-                <div className="card" data-fruit="pear">
+                </button>
+                <button className="card" data-fruit="pear">
                   4
-                </div>
-                <div className="card" data-fruit="orange">
+                </button>
+                <button className="card" data-fruit="orange">
                   5
-                </div>
-                <div className="card card_style_right_top" data-fruit="orange">
+                </button>
+                <button
+                  className="card card_style_right_top"
+                  data-fruit="orange"
+                >
                   6
-                </div>
+                </button>
               </div>
               <div className="row card_row">
-                <div className="card" data-fruit="grape">
+                <button className="card" data-fruit="grape">
                   1
-                </div>
-                <div className="card" data-fruit="grape">
+                </button>
+                <button className="card" data-fruit="grape">
                   2
-                </div>
-                <div className="card" data-fruit="plum">
+                </button>
+                <button className="card" data-fruit="plum">
                   3
-                </div>
-                <div className="card" data-fruit="plum">
+                </button>
+                <button className="card" data-fruit="plum">
                   4
-                </div>
-                <div className="card" data-fruit="banana">
+                </button>
+                <button className="card" data-fruit="banana">
                   5
-                </div>
-                <div className="card" data-fruit="banana">
+                </button>
+                <button className="card" data-fruit="banana">
                   6
-                </div>
+                </button>
               </div>
               <div className="row card_row">
-                <div
+                <button
                   className=" card_style_left_bottom card"
                   data-fruit="raspberry"
                 >
                   1
-                </div>
-                <div className="card" data-fruit="raspberry">
+                </button>
+                <button className="card" data-fruit="raspberry">
                   2
-                </div>
-                <div className="card" data-fruit="cherry">
+                </button>
+                <button className="card" data-fruit="cherry">
                   3
-                </div>
-                <div className="card" data-fruit="cherry">
+                </button>
+                <button className="card" data-fruit="cherry">
                   4
-                </div>
-                <div className="card" data-fruit="peach">
+                </button>
+                <button className="card" data-fruit="peach">
                   5
-                </div>
-                <div
+                </button>
+                <button
                   className="card card_style_right_bottom"
                   data-fruit="peach"
                 >
                   6
-                </div>
+                </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="row new_game">
+        <div className="btn_bg">
+          <button className="btn">START</button>
         </div>
       </div>
     </div>
