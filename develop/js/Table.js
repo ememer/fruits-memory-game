@@ -36,10 +36,30 @@ const Table = () => {
         }
       }
     }
+
     selectCards.forEach((card) => card.addEventListener("click", flipCard));
-  });
+  }, []);
+
+  const restartGame = () => {
+    const btn = document.querySelector(".btn");
+    if (btn.innerText === "START") {
+      btn.innerText = "RESTART";
+      btn.classList.remove("btn_start");
+      btn.classList.add("btn_restart");
+    } else {
+      btn.innerText = "START";
+      btn.classList.remove("btn_restart");
+      btn.classList.add("btn_start");
+    }
+  };
+
   return (
     <div className="container">
+      {/* <div className="row timer">
+        <h1>
+          {min}:{sec}
+        </h1>
+      </div> */}
       <div className="row">
         <div className="col-6 shadow_table">
           <div className="row">
@@ -122,7 +142,9 @@ const Table = () => {
       </div>
       <div className="row new_game">
         <div className="btn_bg">
-          <button className="btn">START</button>
+          <button className="btn btn_start" onClick={() => restartGame()}>
+            START
+          </button>
         </div>
       </div>
     </div>

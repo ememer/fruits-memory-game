@@ -5,8 +5,6 @@ button {
   cursor: pointer;
   &:focus {
     outline: none;
-    transition: 0.3s ease-in;
-    background: #f17d48;
   }
   &:hover {
     outline: none;
@@ -30,7 +28,7 @@ button {
   padding: 10px;
 }
 
-.btn {
+.btn_start {
   background: #cd1a1a;
   width: 400px;
   height: 45px;
@@ -45,6 +43,28 @@ button {
     width: 20px;
     height: 20px;
     background-image: url("./../../images/icons/play.svg");
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 140px;
+  }
+}
+.btn_restart {
+  background: #cd1a1a;
+  width: 400px;
+  height: 45px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url("./../../images/icons/refresh.svg");
     display: inline-block;
     background-size: contain;
     background-repeat: no-repeat;

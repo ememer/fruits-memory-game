@@ -1,0 +1,25 @@
+.timer {
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  h1 {
+    position: absolute;
+    &::before {
+      position: relative;
+      top: 3px;
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-image: url(./../../images/icons/watch.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      margin-right: 5px;
+    }
+  }
+}
