@@ -12,11 +12,7 @@ img {
   height: 100px;
 }
 
-/* .hide{
-  display: none;
-} */
-
-.flipingCard{
+.flippingCard{
   transform: rotateY(180deg);
  }
 
