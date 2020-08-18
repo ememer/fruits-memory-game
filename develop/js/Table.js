@@ -2,152 +2,115 @@ import React, { useEffect } from "react";
 
 const Table = () => {
   useEffect(() => {
-    const selectCards = document.querySelectorAll(".card");
-    let hasFlippedCard = false;
-    let firstCard, secondCard;
+    const memoryCard = document.querySelectorAll(".memory-card");
+    let fCard,
+      sCard,
+      isClicked = false;
 
-    function flipCard() {
-      this.classList.add("test");
-      if (!hasFlippedCard) {
-        hasFlippedCard = true;
-        firstCard = this;
+    function flipAnimation() {
+      this.classList.add("flipingCard");
+      //Sprawdzenie czy pierwsza karta została wybrana
+      //Check the first card was selected
+      if (!isClicked) {
+        isClicked = true;
+        fCard = this;
       } else {
-        hasFlippedCard = false;
-        secondCard = this;
-
-        if (firstCard.dataset.fruit === secondCard.dataset.fruit) {
-          console.log(
-            "Pasuje",
-            firstCard.dataset.fruit,
-            secondCard.dataset.fruit
-          );
-          firstCard.removeEventListener("click", flipCard);
-          secondCard.removeEventListener("click", flipCard);
+        isClicked = false;
+        sCard = this;
+        //Łączenie kart
+        //Matching cards
+        if (fCard.dataset.fruitname === sCard.dataset.fruitname) {
+          fCard.removeEventListener("click", flipAnimation);
+          sCard.removeEventListener("click", flipAnimation);
         } else {
-          console.log(
-            "Nie pasuje",
-            firstCard.dataset.fruit,
-            secondCard.dataset.fruit
-          );
+          //Usunięcie klasy jeśli nie pasują
+          //If they don't match, removing flip class
           setTimeout(() => {
-            firstCard.classList.remove("test");
-            secondCard.classList.remove("test");
-          }, 1000);
+            fCard.classList.remove("flipingCard");
+            sCard.classList.remove("flipingCard");
+          }, 800);
         }
       }
     }
-
-    selectCards.forEach((card) => card.addEventListener("click", flipCard));
+    memoryCard.forEach((card) => card.addEventListener("click", flipAnimation));
   }, []);
-
-  const restartGame = () => {
-    const btn = document.querySelector(".btn");
-    if (btn.innerText === "START") {
-      btn.innerText = "RESTART";
-      btn.classList.remove("btn_start");
-      btn.classList.add("btn_restart");
-    } else {
-      btn.innerText = "START";
-      btn.classList.remove("btn_restart");
-      btn.classList.add("btn_start");
-    }
-  };
-
   return (
-    <div className="container">
-      {/* <div className="row timer">
-        <h1>
-          {min}:{sec}
-        </h1>
-      </div> */}
-      <div className="row">
-        <div className="col-6 shadow_table">
-          <div className="row">
-            <div className="col-6 main_table">
-              <div className="row card_row">
-                <button
-                  className="card card_style_left_top"
-                  data-fruit="strawberry"
-                >
-                  1
-                </button>
-                <button className="card" data-fruit="strawberry">
-                  2
-                </button>
-                <button className="card" data-fruit="pear">
-                  3
-                </button>
-                <button className="card" data-fruit="pear">
-                  4
-                </button>
-                <button className="card" data-fruit="orange">
-                  5
-                </button>
-                <button
-                  className="card card_style_right_top"
-                  data-fruit="orange"
-                >
-                  6
-                </button>
-              </div>
-              <div className="row card_row">
-                <button className="card" data-fruit="grape">
-                  1
-                </button>
-                <button className="card" data-fruit="grape">
-                  2
-                </button>
-                <button className="card" data-fruit="plum">
-                  3
-                </button>
-                <button className="card" data-fruit="plum">
-                  4
-                </button>
-                <button className="card" data-fruit="banana">
-                  5
-                </button>
-                <button className="card" data-fruit="banana">
-                  6
-                </button>
-              </div>
-              <div className="row card_row">
-                <button
-                  className=" card_style_left_bottom card"
-                  data-fruit="raspberry"
-                >
-                  1
-                </button>
-                <button className="card" data-fruit="raspberry">
-                  2
-                </button>
-                <button className="card" data-fruit="cherry">
-                  3
-                </button>
-                <button className="card" data-fruit="cherry">
-                  4
-                </button>
-                <button className="card" data-fruit="peach">
-                  5
-                </button>
-                <button
-                  className="card card_style_right_bottom"
-                  data-fruit="peach"
-                >
-                  6
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <section className="memory-game">
+      <div className="memory-table">
+        <div className="memory-card" data-fruitname="strawberry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/strawberry.svg"></img>
+        </div>{" "}
+        <div className="memory-card" data-fruitname="strawberry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/strawberry.svg"></img>
+        </div>{" "}
+        <button className="memory-card" data-fruitname="raspberry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/raspberry.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="raspberry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/raspberry.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="plum">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/plum.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="plum">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/plum.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="pear">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/pear.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="pear">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/pear.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="peach">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/peach.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="peach">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/peach.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="orange">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/orange.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="orange">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/orange.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="grape">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/grape.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="grape">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/grape.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="cherry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/cherry.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="cherry">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/cherry.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="banana">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/banana.svg"></img>
+        </button>{" "}
+        <button className="memory-card" data-fruitname="banana">
+          <img className="front" src="images/icons/cover.jpg"></img>
+          <img className="back" src="images/cards/banana.svg"></img>
+        </button>{" "}
       </div>
-      <div className="row new_game">
-        <div className="btn_bg">
-          <button className="btn btn_start" onClick={() => restartGame()}>
-            START
-          </button>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 export default Table;

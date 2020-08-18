@@ -4,51 +4,67 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+ 
 }
 
-.container {
-  max-width: 1450px;
+img {
+  width: 100px;
+  height: 100px;
+}
+
+/* .hide{
+  display: none;
+} */
+
+.flipingCard{
+  transform: rotateY(180deg);
+ }
+
+.back{
+  transform: rotateY(180deg);
+}
+
+.front,
+.back{
+  position: absolute;
   width: 100%;
-  margin: 0px auto;
-  padding: 0px;
+  height: 100%;
+  padding: 10px;
+  backface-visibility: hidden;
 }
-
-.container .row {
-  margin-left: 10px;
-  margin-right: 10px;
+.memory-game{
+  border: 1px solid yellow;
+  padding: 20px;
+  perspective: 1000px;
+}
+.memory-card{
+  border: 1px solid yellow;
+  width: 13.900%;
+  height: 140px;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ;
+  
 }
 
-.container .row [class*="col-"] {
-  padding: 0 10px;
+.memory-card:active{
+  transform: scale(0.98);
+  transition: transform 0.2s ;
 }
-
-.container .row .col-1 {
-  flex: 0 0 16.66667%;
+.memory-table{
+  border: 1px solid blue;
+  width: 1280px;
+  height: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-
-.container .row .col-2 {
-  flex: 0 0 33.33333%;
-}
-
-.container .row .col-3 {
-  flex: 0 0 50%;
-}
-
-.container .row .col-4 {
-  flex: 0 0 66.66667%;
-}
-
-.container .row .col-5 {
-  flex: 0 0 83.33333%;
-}
-
-.container .row .col-6 {
-  flex: 0 0 100%;
-}
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -251,11 +267,6 @@ button:focus {
   outline: none;
 }
 
-button:hover {
-  outline: none;
-  transition: 0.3s ease-in;
-  background: #f17d48;
-}
 
 .new_game {
   display: flex;

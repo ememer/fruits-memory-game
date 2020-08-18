@@ -1,0 +1,16 @@
+<svg id="Component_7_1" data-name="Component 7 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="152.152" height="171.232" viewBox="0 0 152.152 171.232">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.324" cy="0.347" r="0.268" gradientTransform="matrix(-1.506, -0.027, -0.061, 1.506, 0.834, -0.167)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e19c3c"/>
+      <stop offset="1" stop-color="#d25624"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ec6f3c"/>
+      <stop offset="1" stop-color="#692b12"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient-2" cx="0.297" cy="0.463" r="0.351" gradientTransform="matrix(1.506, 0.027, -0.061, 1.506, -0.122, -0.242)" xlink:href="#radial-gradient"/>
+  </defs>
+  <path id="Path_382" data-name="Path 382" d="M1053.372,228.82c19.7,9,21.818,19.064,22.877,51.261s.741,67.678-18.641,77.528-43.847-9.744-58.887-38.128-15.993-59.311-1.271-75.409S1033.673,219.818,1053.372,228.82Z" transform="translate(-986.91 -199.264)" fill="url(#radial-gradient)"/>
+  <path id="Path_383" data-name="Path 383" d="M1029.783,229.262s2.025-19.476,5.014-31.431,6.942-16.391,6.942-16.391,6.894-.627,11.57.578a14.347,14.347,0,0,1,7.135,4.242,41.709,41.709,0,0,0-16.583,14.462c-7.087,10.509-11.763,27.575-11.763,27.575Z" transform="translate(-962.658 -181.277)" fill="url(#linear-gradient)"/>
+  <path id="Path_381" data-name="Path 381" d="M23.212,3.73c-19.7,9-21.818,19.064-22.877,51.261s-.741,67.678,18.641,77.528,43.848-9.744,58.887-38.128S93.855,35.08,79.133,18.981,42.912-5.273,23.212,3.73Z" transform="translate(63.582 23.771) rotate(9)" fill="url(#radial-gradient-2)"/>
+</svg>
