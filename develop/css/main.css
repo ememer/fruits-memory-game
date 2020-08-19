@@ -36,7 +36,7 @@ img {
 .memory-card{
   border: 1px solid yellow;
   width: 13.900%;
-  height: 140px;
+  height: 165px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -45,7 +45,7 @@ img {
   margin: 0px 10px;
   transform-style: preserve-3d;
   transition: transform 0.5s ;
-  
+  border-radius: 10px;
 }
 
 .memory-card:active{

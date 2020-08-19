@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Card from "./Card";
 
 const Table = () => {
   useEffect(() => {
@@ -74,78 +75,7 @@ const Table = () => {
   return (
     <section className="memory-game">
       <div className="memory-table">
-        <div className="memory-card" data-fruitname="strawberry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/strawberry.svg"></img>
-        </div>{" "}
-        <div className="memory-card" data-fruitname="strawberry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/strawberry.svg"></img>
-        </div>{" "}
-        <button className="memory-card" data-fruitname="raspberry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/raspberry.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="raspberry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/raspberry.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="plum">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/plum.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="plum">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/plum.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="pear">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/pear.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="pear">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/pear.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="peach">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/peach.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="peach">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/peach.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="orange">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/orange.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="orange">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/orange.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="grape">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/grape.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="grape">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/grape.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="cherry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/cherry.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="cherry">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/cherry.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="banana">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/banana.svg"></img>
-        </button>{" "}
-        <button className="memory-card" data-fruitname="banana">
-          <img className="front" src="images/icons/cover.jpg"></img>
-          <img className="back" src="images/cards/banana.svg"></img>
-        </button>{" "}
+        <Card />
       </div>
     </section>
   );
