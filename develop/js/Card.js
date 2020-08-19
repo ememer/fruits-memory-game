@@ -1,5 +1,5 @@
 import React from "react";
-import fruits from "./../date/list.json";
+import fruits from "./../data/list.json";
 const Card = () => {
   const fruitsListFromData = fruits;
 
