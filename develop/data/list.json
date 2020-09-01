@@ -1,74 +1,92 @@
 [
   {
     "fruit": "banana",
-    "url": "images/cards/banana.svg"
+    "url": "images/cards/banana.svg",
+    "id": "1"
   },
   {
     "fruit": "cherry",
-    "url": "images/cards/cherry.svg"
+    "url": "images/cards/cherry.svg",
+    "id": "2"
   },
   {
     "fruit": "grape",
-    "url": "images/cards/grape.svg"
+    "url": "images/cards/grape.svg",
+    "id": "3"
   },
   {
     "fruit": "orange",
-    "url": "images/cards/orange.svg"
+    "url": "images/cards/orange.svg",
+    "id": "4"
   },
   {
     "fruit": "peach",
-    "url": "images/cards/peach.svg"
+    "url": "images/cards/peach.svg",
+    "id": "5"
   },
   {
     "fruit": "pear",
-    "url": "images/cards/pear.svg"
+    "url": "images/cards/pear.svg",
+    "id": "6"
   },
   {
     "fruit": "plum",
-    "url": "images/cards/plum.svg"
+    "url": "images/cards/plum.svg",
+    "id": "7"
   },
   {
     "fruit": "raspberry",
-    "url": "images/cards/raspberry.svg"
+    "url": "images/cards/raspberry.svg",
+    "id": "8"
   },
   {
     "fruit": "strawberry",
-    "url": "images/cards/strawberry.svg"
+    "url": "images/cards/strawberry.svg",
+    "id": "9"
   },
   {
     "fruit": "banana",
-    "url": "images/cards/banana.svg"
+    "url": "images/cards/banana.svg",
+    "id": "10"
   },
   {
     "fruit": "cherry",
-    "url": "images/cards/cherry.svg"
+    "url": "images/cards/cherry.svg",
+    "id": "11"
   },
   {
     "fruit": "grape",
-    "url": "images/cards/grape.svg"
+    "url": "images/cards/grape.svg",
+    "id": "12"
   },
   {
     "fruit": "orange",
-    "url": "images/cards/orange.svg"
+    "url": "images/cards/orange.svg",
+    "id": "13"
   },
   {
     "fruit": "peach",
-    "url": "images/cards/peach.svg"
+    "url": "images/cards/peach.svg",
+    "id": "14"
   },
   {
     "fruit": "pear",
-    "url": "images/cards/pear.svg"
+    "url": "images/cards/pear.svg",
+    "id": "15"
   },
   {
     "fruit": "plum",
-    "url": "images/cards/plum.svg"
+    "url": "images/cards/plum.svg",
+    "id": "16"
   },
   {
     "fruit": "raspberry",
-    "url": "images/cards/raspberry.svg"
+    "url": "images/cards/raspberry.svg",
+    "id": "17"
   },
   {
     "fruit": "strawberry",
-    "url": "images/cards/strawberry.svg"
+    "url": "images/cards/strawberry.svg",
+    "id": "18"
   }
 ]

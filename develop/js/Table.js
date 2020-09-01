@@ -1,81 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./Card";
+import fruit from "./../data/list.json";
 
 const Table = () => {
-  useEffect(() => {
-    const memoryCard = document.querySelectorAll(".memory-card");
-
-    let fCard,
-      sCard,
-      isClicked = false,
-      cardLocker = false;
-
-    function flipAnimation() {
-      if (cardLocker) return;
-      //Locking double click
-      if (this === fCard) return;
-      this.classList.add("flippingCard");
-      //Sprawdzenie czy pierwsza karta została wybrana
-      //Check the first card was selected
-      if (!isClicked) {
-        isClicked = true;
-        fCard = this;
-      } else {
-        sCard = this;
-        cardMatching();
-      }
+  const dataFromJSON = fruit;
+  const [fCard, setFCard] = useState("");
+  const [sCard, setSCard] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = (event) => {
+    const target = event.target.parentNode.dataset.fruitname;
+    if (!isClicked) {
+      setIsClicked(true);
+      flippingAnimation();
+      setFCard(target);
+    } else {
+      flippingAnimation();
+      setSCard(target);
+      cardMatching();
     }
-
-    function cardMatching() {
-      //Łączenie kart
-      //Matching cards
-      if (fCard.dataset.fruitname === sCard.dataset.fruitname) {
-        listenerRemover();
-      } else {
-        backRotating();
-      }
-    }
-
-    function listenerRemover() {
-      fCard.removeEventListener("click", flipAnimation);
-      sCard.removeEventListener("click", flipAnimation);
+  };
+  const cardMatching = () => {
+    if (fCard === sCard) {
+      console.log("tak", "first:", fCard, ", second:", sCard);
+    } else {
+      console.warn("nie", "first:", fCard, ", second:", sCard);
       clearMemory();
     }
+  };
 
-    function backRotating() {
-      //Blokada kart
-      //Cards blocking
-      cardLocker = true;
-      //Usunięcie klasy jeśli nie pasują
-      //If they don't match, removing flip class
-      //delay 800ms
-      setTimeout(() => {
-        fCard.classList.remove("flippingCard");
-        sCard.classList.remove("flippingCard");
-        //unlocking cards
-        clearMemory();
-      }, 800);
-    }
+  const flippingAnimation = () => {
+    event.target.parentNode.className += " flippingCard";
+  };
 
-    function clearMemory() {
-      fCard = null;
-      sCard = null;
-      cardLocker = false;
-      isClicked = false;
-    }
+  const clearMemory = () => {
+    setFCard("");
+    setSCard("");
+    setIsClicked(!isClicked);
+  };
 
-    (function shuffleCards() {
-      memoryCard.forEach((card) => {
-        let randomCardsPos = Math.floor(Math.random() * 19);
-        card.style.order = randomCardsPos;
-      });
-    })();
-    memoryCard.forEach((card) => card.addEventListener("click", flipAnimation));
-  }, []);
   return (
     <section className="memory-game">
       <div className="memory-table">
-        <Card />
+        {dataFromJSON.map((card) => (
+          <Card
+            key={card.id}
+            data={card}
+            onClick={(event) => handleClick(event)}
+          />
+        ))}
       </div>
     </section>
   );

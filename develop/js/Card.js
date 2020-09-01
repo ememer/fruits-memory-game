@@ -1,16 +1,20 @@
-import React from "react";
-import fruits from "./../data/list.json";
-const Card = () => {
-  const fruitsListFromData = fruits;
+import React, { Fragment } from "react";
 
-  const card = fruitsListFromData.map((card, index) => (
-    <button key={index} className="memory-card" data-fruitname={card.fruit}>
-      <img className="front" src="images/icons/cover.jpg" />
-      <img className="back" src={card.url} />
-    </button>
-  ));
+const Card = (props) => {
+  const { fruit, url } = props.data;
 
-  return <>{card}</>;
+  return (
+    <>
+      <button
+        data-fruitname={fruit}
+        className="memory-card"
+        onClick={props.onClick}
+      >
+        <img className="front" src="images/icons/cover.jpg" />
+        <img className="back" src={url} />
+      </button>
+    </>
+  );
 };
 
 export default Card;
