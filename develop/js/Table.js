@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import fruit from "./../data/list.json";
 
 const Table = () => {
   const dataFromJSON = fruit;
-  const [fCard, setFCard] = useState("");
-  const [sCard, setSCard] = useState("");
+  const [fCard, setFCard] = useState("321");
+  const [sCard, setSCard] = useState("123");
   const [isClicked, setIsClicked] = useState(false);
+  const [points, setPoints] = useState(0);
+  const [title, setTitle] = useState("Fruit memory game");
+  document.title = `${title}`;
   const handleClick = (event) => {
     const target = event.target.parentNode.dataset.fruitname;
     if (!isClicked) {
@@ -16,26 +19,28 @@ const Table = () => {
     } else {
       flippingAnimation();
       setSCard(target);
-      cardMatching();
     }
   };
-  const cardMatching = () => {
+
+  useEffect(() => {
     if (fCard === sCard) {
-      console.log("tak", "first:", fCard, ", second:", sCard);
-    } else {
-      console.warn("nie", "first:", fCard, ", second:", sCard);
+      setPoints(points + 1);
+      console.log("Pasują", "Pierwszy", fCard, "Drug", sCard);
+      setTitle(points);
       clearMemory();
+    } else {
+      clearMemory();
+      console.log(points);
+      console.log(this);
     }
-  };
+  }, [sCard]);
 
   const flippingAnimation = () => {
     event.target.parentNode.className += " flippingCard";
   };
 
   const clearMemory = () => {
-    setFCard("");
-    setSCard("");
-    setIsClicked(!isClicked);
+    setIsClicked(false);
   };
 
   return (
