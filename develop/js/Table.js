@@ -4,21 +4,31 @@ import fruit from "./../data/list.json";
 
 const Table = () => {
   const dataFromJSON = fruit;
-  const [fCard, setFCard] = useState("321");
-  const [sCard, setSCard] = useState("123");
+  const [fCard, setFCard] = useState("");
+  const [sCard, setSCard] = useState("");
+  const [TargetedCardFirst, setTargetedCardFirst] = useState();
+  const [TargetedCardSecond, setTargetedCardSecond] = useState();
   const [isClicked, setIsClicked] = useState(false);
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState("Fruit memory game");
+  const [shuffle, setShuffle] = useState(false);
+  const [isLocked, setLocked] = useState(false);
+  let TargetedCardFirstMemory = TargetedCardFirst;
+  let TargetedCardSecundMemory = TargetedCardSecond;
+
   document.title = `${title}`;
   const handleClick = (event) => {
     const target = event.target.parentNode.dataset.fruitname;
+    if (isLocked) return;
     if (!isClicked) {
       setIsClicked(true);
       flippingAnimation();
       setFCard(target);
+      setTargetedCardFirst(event.target.parentNode);
     } else {
       flippingAnimation();
       setSCard(target);
+      setTargetedCardSecond(event.target.parentNode);
     }
   };
 
@@ -27,20 +37,28 @@ const Table = () => {
       setPoints(points + 1);
       console.log("Pasują", "Pierwszy", fCard, "Drug", sCard);
       setTitle(points);
-      clearMemory();
+      setIsClicked(false);
     } else {
-      clearMemory();
-      console.log(points);
-      console.log(this);
+      setLocked(true);
+      setIsClicked(false);
+      console.warn("Nie pasuja", "Pierwszy", fCard, "Drug", sCard);
+      setFCard();
+      setSCard();
+      setTimeout(() => {
+        TargetedCardFirstMemory.className = "memory-card";
+        TargetedCardSecundMemory.className = "memory-card";
+        setLocked(false);
+      }, 800);
     }
   }, [sCard]);
 
-  const flippingAnimation = () => {
-    event.target.parentNode.className += " flippingCard";
+  const shuffleCards = () => {
+    let randomCardsPos = Math.floor(Math.random() * 19);
+    return randomCardsPos;
   };
 
-  const clearMemory = () => {
-    setIsClicked(false);
+  const flippingAnimation = () => {
+    event.target.parentNode.className += " flippingCard";
   };
 
   return (
