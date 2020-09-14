@@ -9,14 +9,14 @@ const Table = () => {
   const [TargetedCardFirst, setTargetedCardFirst] = useState();
   const [TargetedCardSecond, setTargetedCardSecond] = useState();
   const [isClicked, setIsClicked] = useState(false);
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(1);
   const [title, setTitle] = useState("Fruit memory game");
   const [shuffle, setShuffle] = useState(false);
   const [isLocked, setLocked] = useState(false);
   let TargetedCardFirstMemory = TargetedCardFirst;
   let TargetedCardSecundMemory = TargetedCardSecond;
-
   document.title = `${title}`;
+
   const handleClick = (event) => {
     const target = event.target.parentNode.dataset.fruitname;
     if (isLocked) return;
@@ -29,33 +29,40 @@ const Table = () => {
       flippingAnimation();
       setSCard(target);
       setTargetedCardSecond(event.target.parentNode);
+      setLocked(true);
     }
   };
 
   useEffect(() => {
-    if (fCard === sCard) {
-      setPoints(points + 1);
-      console.log("Pasują", "Pierwszy", fCard, "Drug", sCard);
-      setTitle(points);
-      setIsClicked(false);
-    } else {
-      setLocked(true);
-      setIsClicked(false);
-      console.warn("Nie pasuja", "Pierwszy", fCard, "Drug", sCard);
-      setFCard();
-      setSCard();
-      setTimeout(() => {
-        TargetedCardFirstMemory.className = "memory-card";
-        TargetedCardSecundMemory.className = "memory-card";
-        setLocked(false);
-      }, 800);
+    if (!shuffle) {
+      shuffleCards();
+      setShuffle(true);
     }
+    if (isClicked)
+      if (fCard === sCard) {
+        setPoints(points + 1);
+        setTitle(points);
+        setIsClicked(false);
+        setLocked(false);
+      } else {
+        setLocked(true);
+        setIsClicked(false);
+        console.warn("Nie pasuja", "Pierwszy", fCard, "Drug", sCard);
+        setTimeout(() => {
+          TargetedCardFirstMemory.className = "memory-card";
+          TargetedCardSecundMemory.className = "memory-card";
+          setLocked(false);
+        }, 800);
+      }
   }, [sCard]);
 
-  const shuffleCards = () => {
-    let randomCardsPos = Math.floor(Math.random() * 19);
-    return randomCardsPos;
-  };
+  function shuffleCards() {
+    let cards = document.querySelectorAll("button");
+    cards.forEach((card) => {
+      let numbers = Math.floor(Math.random() * 19);
+      card.style.order = numbers;
+    });
+  }
 
   const flippingAnimation = () => {
     event.target.parentNode.className += " flippingCard";
