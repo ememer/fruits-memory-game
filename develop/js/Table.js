@@ -3,7 +3,6 @@ import Card from "./Card";
 import fruit from "./../data/list.json";
 
 const Table = () => {
-  debugger;
   const dataFromJSON = fruit;
   const [firstCard, setFirstCard] = useState();
   const [secondCard, setSecondCard] = useState();
