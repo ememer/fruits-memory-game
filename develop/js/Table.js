@@ -4,7 +4,7 @@ import fruit from "./../data/list.json";
 
 const Table = () => {
   const dataFromJSON = fruit;
-  const [firstCard, setFirstCard] = useState();
+  const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState();
   const [TargetedCardFirst, setTargetedCardFirst] = useState();
   const [TargetedCardSecond, setTargetedCardSecond] = useState();
@@ -13,7 +13,7 @@ const Table = () => {
   const [title, setTitle] = useState("Fruit memory game");
   const [shuffle, setShuffle] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
-  const [matchCards, setMatchCards] = useState([]);
+  const [matchCards, setMatchCards] = useState(["fruits-Array"]);
   let TargetedCardFirstMemory = TargetedCardFirst;
   let TargetedCardSecondMemory = TargetedCardSecond;
   document.title = `${title}`;
@@ -26,16 +26,14 @@ const Table = () => {
     if (isLocked) return;
     if (!isClicked) {
       setIsClicked(true);
+      setTargetedCardFirst(event.target.parentNode);
       setFirstCard(target);
       flippingAnimation();
-      setTargetedCardFirst(event.target.parentNode);
-      console.log(TargetedCardFirst);
     } else {
-      setSecondCard(target);
-      setIsLocked(true);
       setTargetedCardSecond(event.target.parentElement);
+      setIsLocked(true);
+      setSecondCard(target);
       flippingAnimation();
-      console.log(TargetedCardSecond);
     }
   };
 
@@ -43,7 +41,7 @@ const Table = () => {
     if (isClicked) {
       matchingCards();
     }
-  }, [secondCard]);
+  }, [secondCard, matchCards]);
 
   //MatchingCards
   //Function matching cards by dataset from button, then when secondCard state changing/updating
@@ -52,12 +50,12 @@ const Table = () => {
     if (firstCard === secondCard) {
       setPoints(points + 1);
       setTitle(points);
+      setMatchCards((prevCard) => [...prevCard, firstCard]);
+      clearTarget();
       unlockCards();
-      console.info(firstCard, secondCard);
     } else {
       coverCards();
       unlockCards();
-      console.warn(firstCard, secondCard);
     }
   }
 
