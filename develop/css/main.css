@@ -4,7 +4,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
- 
 }
 
 img {
@@ -12,30 +11,30 @@ img {
   height: 100px;
 }
 
-.flippingCard{
+.flippingCard {
   transform: rotateY(180deg);
- }
+}
 
-.back{
+.back {
   transform: rotateY(180deg);
 }
 
 .front,
-.back{
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
   padding: 10px;
   backface-visibility: hidden;
 }
-.memory-game{
+.memory-game {
   border: 1px solid yellow;
   padding: 20px;
   perspective: 1000px;
 }
-.memory-card{
+.memory-card {
   border: 1px solid yellow;
-  width: 13.900%;
+  width: 13.9%;
   height: 165px;
   position: relative;
   display: flex;
@@ -44,15 +43,15 @@ img {
   align-items: center;
   margin: 0px 10px;
   transform-style: preserve-3d;
-  transition: transform 0.5s ;
+  transition: transform 0.5s;
   border-radius: 10px;
 }
 
-.memory-card:active{
+.memory-card:active {
   transform: scale(0.98);
-  transition: transform 0.2s ;
+  transition: transform 0.2s;
 }
-.memory-table{
+.memory-table {
   border: 1px solid blue;
   width: 1280px;
   height: 550px;
@@ -187,12 +186,14 @@ q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after {
+blockquote:before,
+blockquote:after {
   content: "";
   content: none;
 }
 
-q:before, q:after {
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -232,7 +233,8 @@ a {
   width: 130px;
   height: 130px;
   margin: 0px 7.5px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25), inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 6px rgba(0, 0, 0, 0.1);
   border: 2px solid #cd1a1a70;
 }
 
@@ -253,6 +255,7 @@ a {
 }
 
 button {
+  display: inline-block;
   background: none;
   border: none;
   text-decoration: none;
@@ -262,7 +265,6 @@ button {
 button:focus {
   outline: none;
 }
-
 
 .new_game {
   display: flex;

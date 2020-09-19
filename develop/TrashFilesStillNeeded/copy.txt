@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import fruit from "./../data/list.json";
+import { NULL } from "node-sass";
 
 const Table = () => {
-  debugger;
   const dataFromJSON = fruit;
-  const [firstCard, setFirstCard] = useState();
+  const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState();
   const [TargetedCardFirst, setTargetedCardFirst] = useState();
   const [TargetedCardSecond, setTargetedCardSecond] = useState();
@@ -14,7 +14,6 @@ const Table = () => {
   const [title, setTitle] = useState("Fruit memory game");
   const [shuffle, setShuffle] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
-  const [matchCards, setMatchCards] = useState([]);
   let TargetedCardFirstMemory = TargetedCardFirst;
   let TargetedCardSecondMemory = TargetedCardSecond;
   document.title = `${title}`;
@@ -23,24 +22,27 @@ const Table = () => {
   //When first card was selected and set on stage, the second click set the nex card stage and lock immediately possibility choosing next card to time when the matching card and unflipping card animation was done.
 
   const handleClick = (event) => {
-    const target = event.target.parentElement.dataset.fruitname;
+    const target = event.target.dataset.fruitname;
+
     if (isLocked) return;
     if (!isClicked) {
       setIsClicked(true);
+      setTargetedCardFirst(event.target.parentElement);
       setFirstCard(target);
       flippingAnimation();
-      setTargetedCardFirst(event.target.parentNode);
-      console.log(TargetedCardFirst);
     } else {
-      setSecondCard(target);
-      setIsLocked(true);
       setTargetedCardSecond(event.target.parentElement);
+      setIsLocked(true);
+      setSecondCard(target);
       flippingAnimation();
-      console.log(TargetedCardSecond);
     }
   };
 
   useEffect(() => {
+    if (!shuffle) {
+      setShuffle((prevState) => !prevState);
+      shuffleCards();
+    }
     if (isClicked) {
       matchingCards();
     }
@@ -53,12 +55,16 @@ const Table = () => {
     if (firstCard === secondCard) {
       setPoints(points + 1);
       setTitle(points);
+      TargetedCardFirst.setAttribute("disabled", "disabled");
+      TargetedCardSecond.setAttribute("disabled", "disabled");
+      clearTarget();
       unlockCards();
-      console.info(firstCard, secondCard);
+
+      console.log("pasuja", firstCard, secondCard);
     } else {
+      setIsLocked(true);
+      console.log("nie-pasują", firstCard, secondCard);
       coverCards();
-      unlockCards();
-      console.warn(firstCard, secondCard);
     }
   }
 
@@ -76,7 +82,7 @@ const Table = () => {
   function shuffleCards() {
     let cards = document.querySelectorAll("button");
     cards.forEach((card) => {
-      let numbers = Math.floor(Math.random() * 19);
+      let numbers = Math.floor(Math.random() * 18);
       card.style.order = numbers;
     });
   }
@@ -94,10 +100,11 @@ const Table = () => {
   //Delay can be set by user in future.
 
   function coverCards() {
+    clearTarget();
     setTimeout(() => {
       TargetedCardFirstMemory.className = "memory-card";
       TargetedCardSecondMemory.className = "memory-card";
-      clearTarget();
+      unlockCards();
     }, 800);
   }
 
@@ -112,8 +119,9 @@ const Table = () => {
   return (
     <section className="memory-game">
       <div className="memory-table">
-        {dataFromJSON.map((card) => (
+        {dataFromJSON.map((card, index) => (
           <Card
+            id={index}
             key={card.id}
             data={card}
             onClick={(event) => handleClick(event)}
