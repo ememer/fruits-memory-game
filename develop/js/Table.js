@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import fruit from "./../data/list.json";
 import StartBtn from "./StartBtn";
+import Timer from "./Timer";
 
 const Table = () => {
   const dataFromJSON = fruit;
@@ -32,8 +33,8 @@ const Table = () => {
       flippingAnimation();
     } else {
       setTargetedCardSecond(event.target.parentElement);
-      setSecondCard(target);
       setIsLocked(true);
+      setSecondCard(target);
       flippingAnimation();
     }
   };
@@ -60,11 +61,9 @@ const Table = () => {
       unlockCards();
       clearTarget();
     } else {
-      clearTarget();
       coverCards();
       setSecondCard(null);
     }
-    unlockCards();
 
     if (points == 9) {
       setTimeout(() => {
@@ -107,11 +106,11 @@ const Table = () => {
   //Delay can be set by user in future.
 
   function coverCards() {
-    clearTarget();
     setTimeout(() => {
       TargetedCardFirstMemory.className = "memory-card";
       TargetedCardSecondMemory.className = "memory-card";
       unlockCards();
+      clearTarget();
     }, 800);
   }
 
@@ -125,6 +124,9 @@ const Table = () => {
 
   return (
     <>
+      <section>
+        <Timer />
+      </section>
       <section className="memory-game">
         <div className="memory-table">
           {dataFromJSON.map((card) => (
@@ -136,7 +138,14 @@ const Table = () => {
           ))}
         </div>
       </section>
-      <StartBtn onClick={() => shuffleCards()} />
+      <section>
+        {" "}
+        <StartBtn
+          onClick={() => {
+            shuffleCards();
+          }}
+        />
+      </section>
     </>
   );
 };
