@@ -68,6 +68,8 @@ const Table = () => {
     if (points == 9) {
       setTimeout(() => {
         shuffleCards();
+        setTitle("Fruit memory game");
+        setPoints(1);
       }, 2000);
     }
   }
@@ -109,8 +111,8 @@ const Table = () => {
     setTimeout(() => {
       TargetedCardFirstMemory.className = "memory-card";
       TargetedCardSecondMemory.className = "memory-card";
-      unlockCards();
       clearTarget();
+      unlockCards();
     }, 800);
   }
 
