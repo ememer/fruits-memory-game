@@ -5,7 +5,7 @@ const Card = (props) => {
 
   return (
     <>
-      <button id={props.id} className="memory-card" onClick={props.onClick}>
+      <button className="memory-card" onClick={props.onClick}>
         <img
           className="front"
           data-fruitname={fruit}

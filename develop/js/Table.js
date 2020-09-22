@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import fruit from "./../data/list.json";
+import StartBtn from "./StartBtn";
 
 const Table = () => {
   const dataFromJSON = fruit;
@@ -31,8 +32,8 @@ const Table = () => {
       flippingAnimation();
     } else {
       setTargetedCardSecond(event.target.parentElement);
-      setIsLocked(true);
       setSecondCard(target);
+      setIsLocked(true);
       flippingAnimation();
     }
   };
@@ -56,11 +57,19 @@ const Table = () => {
       setTitle(points);
       TargetedCardFirst.setAttribute("disabled", "disabled");
       TargetedCardSecond.setAttribute("disabled", "disabled");
-      clearTarget();
       unlockCards();
+      clearTarget();
     } else {
-      setIsLocked(true);
+      clearTarget();
       coverCards();
+      setSecondCard(null);
+    }
+    unlockCards();
+
+    if (points == 9) {
+      setTimeout(() => {
+        shuffleCards();
+      }, 2000);
     }
   }
 
@@ -76,11 +85,13 @@ const Table = () => {
   //Function shuffling cards immediately using  flex order
 
   function shuffleCards() {
-    let cards = document.querySelectorAll("button");
+    let cards = document.querySelectorAll(".memory-card");
     cards.forEach((card) => {
       let numbers = Math.floor(Math.random() * 18);
       card.style.order = numbers;
+      card.className = "memory-card";
     });
+    unlockCards();
   }
 
   //flippingAnimation
@@ -110,22 +121,23 @@ const Table = () => {
   function clearTarget() {
     setTargetedCardFirst();
     setTargetedCardSecond();
-    console.warn("WYCZYSZCZONY");
   }
 
   return (
-    <section className="memory-game">
-      <div className="memory-table">
-        {dataFromJSON.map((card, index) => (
-          <Card
-            id={index}
-            key={card.id}
-            data={card}
-            onClick={(event) => handleClick(event)}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="memory-game">
+        <div className="memory-table">
+          {dataFromJSON.map((card) => (
+            <Card
+              key={card.id}
+              data={card}
+              onClick={(event) => handleClick(event)}
+            />
+          ))}
+        </div>
+      </section>
+      <StartBtn onClick={() => shuffleCards()} />
+    </>
   );
 };
 export default Table;
