@@ -1,6 +1,6 @@
 import React from "react";
 
-const StartBtn = (props) => {
+const ShuffleButton = (props) => {
   return (
     <div>
       <button onClick={props.onClick}>Shuffle</button>
@@ -8,4 +8,4 @@ const StartBtn = (props) => {
   );
 };
 
-export default StartBtn;
+export default ShuffleButton;

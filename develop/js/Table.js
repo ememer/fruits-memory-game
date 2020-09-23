@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import fruit from "./../data/list.json";
-import StartBtn from "./StartBtn";
-import Timer from "./Timer";
+import ShuffleButton from "./ShuffleButton";
 
 const Table = () => {
   const dataFromJSON = fruit;
@@ -15,6 +14,7 @@ const Table = () => {
   const [title, setTitle] = useState("Fruit memory game");
   const [shuffle, setShuffle] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
+  const [delay, setDelay] = useState(1300);
   let TargetedCardFirstMemory = TargetedCardFirst;
   let TargetedCardSecondMemory = TargetedCardSecond;
   document.title = `${title}`;
@@ -37,6 +37,13 @@ const Table = () => {
       setSecondCard(target);
       flippingAnimation();
     }
+  };
+
+  //handleClickLevel
+  //Set delay to cover cards (choosing lvl)
+  const handleClickLevel = (e) => {
+    setDelay(e.target.value);
+    restartGame();
   };
 
   useEffect(() => {
@@ -67,9 +74,7 @@ const Table = () => {
 
     if (points == 9) {
       setTimeout(() => {
-        shuffleCards();
-        setTitle("Fruit memory game");
-        setPoints(1);
+        restartGame();
       }, 2000);
     }
   }
@@ -105,7 +110,6 @@ const Table = () => {
 
   //coverCards
   //Function cover cards when then not match whit delay.
-  //Delay can be set by user in future.
 
   function coverCards() {
     setTimeout(() => {
@@ -113,7 +117,7 @@ const Table = () => {
       TargetedCardSecondMemory.className = "memory-card";
       clearTarget();
       unlockCards();
-    }, 800);
+    }, delay);
   }
 
   //clearTarget()
@@ -124,10 +128,23 @@ const Table = () => {
     setTargetedCardSecond();
   }
 
+  //restartGame
+  //Function simply restart game to default value
+
+  function restartGame() {
+    shuffleCards();
+    setTitle("Fruit memory game");
+    setPoints(1);
+  }
+
   return (
     <>
       <section>
-        <Timer />
+        <div onClick={handleClickLevel}>
+          <button value={1300}>Easy</button>
+          <button value={800}>Medium</button>
+          <button value={200}>Hard</button>
+        </div>
       </section>
       <section className="memory-game">
         <div className="memory-table">
@@ -141,8 +158,7 @@ const Table = () => {
         </div>
       </section>
       <section>
-        {" "}
-        <StartBtn
+        <ShuffleButton
           onClick={() => {
             shuffleCards();
           }}

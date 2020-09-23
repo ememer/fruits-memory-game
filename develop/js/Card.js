@@ -9,7 +9,7 @@ const Card = (props) => {
         <img
           className="front"
           data-fruitname={fruit}
-          src="images/icons/cover.jpg"
+          src="images/cards/cover.jpg"
         />
         <img className="back" src={url} />
       </button>
