@@ -1,14 +1,51 @@
+
 # Fruit memory game
 
-Its simply project of memory card game based on React
+Fruit memory game is a simple project containing react web app with memory card game. Try to find all matched card with simply clicking each of card.
 
-## Decription
+This game is not supporting fully mobile view for best expirience i suggest to use desktop
 
-Fruit memory game is simply and basick version of memory card game
-- Design and every element is created by me
-using Adobe Xd
-- 3 difficulty levels (changing time to remember position of cards)
-	- Easy  
-	-Medium
-	-Hard
-### END
+
+This game support 3 levels of play:
+```bash
+ - Easy for begginers,
+ ```
+ ```bash
+ - Medium for well-versed gamers,
+ ```
+ ```bash
+ - Hard for pro players 
+```
+
+
+## Demo
+
+https://chillycube.pl/memory/
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/ememer/fruits-memory-game.git
+```
+
+Go to the project directory
+
+```bash
+  cd fruit-memory-game
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
+
